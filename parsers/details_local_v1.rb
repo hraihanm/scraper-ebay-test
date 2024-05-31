@@ -19,11 +19,11 @@ content = File.read(file_path)
 nokogiri = Nokogiri.HTML(content)
 
 # get the seller username
-seller = nokogiri.at_css('div.x-sellercard-atf__info__about-seller')['title']
+seller = nokogiri.at_css('h2.d-stores-info-categories__container__info__section__title > a > span')&.text
 printer("Seller", seller)
 
 # get the seller's feedback 
-feedback = nokogiri.at_css('ul.x-sellercard-atf__data-item-wrapper > li:first-child > a' )&.text
+feedback = nokogiri.at_css('div.d-stores-info-categories__container__info__section > div:nth-of-type(2) > span:first-child')&.text
 printer("feedback", feedback)
 
 # # save it into outputs
